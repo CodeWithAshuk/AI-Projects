@@ -19,18 +19,14 @@ def main():
         endpoint = os.getenv("ENDPOINT")
         model_deployment =  os.getenv("MODEL_DEPLOYMENT")
         api_version = os.getenv("API_VERSION")
-        
+        api_key= os.getenv("API_KEY")
         # Initialize the client
-        token_provider = get_bearer_token_provider(
-            DefaultAzureCredential(exclude_environment_credential=True,
-                exclude_managed_identity_credential=True), 
-            "https://cognitiveservices.azure.com/.default"                      
-        )
+        
 
         client = AzureOpenAI(
-            api_version=     api_version,
+            api_version=api_version,
             azure_endpoint=endpoint,
-            azure_ad_token_provider=token_provider
+            api_key=api_key
         )
         
 
